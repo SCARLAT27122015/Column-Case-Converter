@@ -29,17 +29,7 @@ function convertCase() {
 
   colsUpperIndex.forEach(index => {
     let tgtColData = actionSheet.getRange((filaEncabezado + 1), (index + 1), actionSheet.getLastRow() - 1, 1).getValues();
-    tgtColData = tgtColData.map(item => {
-      
-      if (typeConversion === 'upper') {
-        return [item[0].toUpperCase()]
-      } else if (typeConversion === 'lower') {
-        return [item[0].toLowerCase()]
-      }else {
-        return [item[0]]
-      }
-      
-    });
+    tgtColData = tgtColData.map(item => typeConversion === 'upper' ? [item[0].toUpperCase()] : [item[0].toLowerCase()]);
     actionSheet.getRange((filaEncabezado + 1), (index + 1), actionSheet.getLastRow() - 1, 1).setValues(tgtColData);   
   });
 }
